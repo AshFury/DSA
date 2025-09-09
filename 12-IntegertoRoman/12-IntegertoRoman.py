@@ -1,16 +1,16 @@
-# Last updated: 08/09/2025, 09:45:34
+# Last updated: 09/09/2025, 10:22:06
 class Solution:
-    def searchInsert(self, nums: List[int], target: int) -> int:
-        left=0
-        right=len(nums)-1
-        while left<=right:
-            mid=left+(right-left)//2
-            if nums[mid]==target:
-                return mid
-            elif nums[mid]>target:
-                right=mid-1
+    def lengthOfLastWord(self, s: str) -> int:
+        res=0
+        start=False
+        for i in range(len(s)-1,-1,-1):
+            print(s[i])
+            if s[i]==" " and not start:
+                continue
+            elif s[i]==" " and start:
+                return res
             else:
-                left=mid+1
-        return left
-
+                start=True
+                res+=1
+        return res
         
