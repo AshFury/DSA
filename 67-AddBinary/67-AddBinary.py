@@ -1,16 +1,15 @@
-# Last updated: 11/09/2025, 09:37:56
+# Last updated: 11/09/2025, 09:49:01
 class Solution:
-    def plusOne(self, digits: List[int]) -> List[int]:
-        num=0
-        for i in digits:
-            num+=i
-            num*=10
-        num=num//10
-        num+=1
-        res=[]
-        while num>0:
-            res.append(num%10)
-            num=num//10
-        print(res)
-        res.reverse()
-        return res
+    def mySqrt(self, x: int) -> int:
+        if x==0:
+            return 0
+        for i in range(0,(x//2)+2):
+            if i*i==x:
+                return i
+            elif i*i>x:
+                return i-1
+            else:
+                continue
+    
+
+        
