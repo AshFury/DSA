@@ -1,19 +1,37 @@
-# Last updated: 11/09/2025, 09:53:42
+# Last updated: 11/09/2025, 10:49:45
 class Solution:
-    def mySqrt(self, x: int) -> int:
-        
-        if x < 2:
-            return x
-
-        low, high = 1, x // 2
-
-        while low <= high:
-            mid = (low + high) // 2
-
-            if mid * mid == x:
-                return mid
-            elif mid * mid < x:
-                low = mid + 1
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        if target not in nums:
+            return [-1,-1]
+        low=0
+        high=len(nums)
+        vals=[]
+        while low<=high:
+            mid=(low+high)//2
+            if nums[mid]>target:
+                high=mid-1
+            elif nums[mid]<target:
+                low=mid+1
             else:
-                high = mid - 1
-        return high
+                vals.append(mid)
+                temp=mid
+                while nums[temp]==target:
+                    temp-=1
+                    if temp>=0 and temp<len(nums):
+                        if nums[temp]==target:
+                            vals.append(temp)
+                    else:
+                        break
+                temp=mid
+                while nums[temp]==target:
+                    temp+=1
+                    if temp>=0 and temp<len(nums):
+                        if nums[temp]==target:
+                            vals.append(temp)
+                    else:
+                        break
+                break
+        return [min(vals),max(vals)]
+
+
+        
