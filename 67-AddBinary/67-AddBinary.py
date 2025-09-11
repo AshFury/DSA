@@ -1,15 +1,19 @@
-# Last updated: 11/09/2025, 09:49:01
+# Last updated: 11/09/2025, 09:53:42
 class Solution:
     def mySqrt(self, x: int) -> int:
-        if x==0:
-            return 0
-        for i in range(0,(x//2)+2):
-            if i*i==x:
-                return i
-            elif i*i>x:
-                return i-1
-            else:
-                continue
-    
-
         
+        if x < 2:
+            return x
+
+        low, high = 1, x // 2
+
+        while low <= high:
+            mid = (low + high) // 2
+
+            if mid * mid == x:
+                return mid
+            elif mid * mid < x:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return high
